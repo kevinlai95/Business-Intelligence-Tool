@@ -11,7 +11,7 @@ class ModelTable extends AbstractTableModel {
 	private static final int YEAR = 2;
 	private static final int QUANTITY = 3;
 
-	private String[] columnNames = { "Category", "State", "Month", "Quantity" }; //names of column headers
+	private String[] columnNames = { "Item", "Location", "Time", "Quantity" }; //names of column headers
 	private ArrayList<ArrayList<String>> table;
 
 	public ModelTable(ArrayList<ArrayList<String>> table) {

@@ -285,22 +285,25 @@ public class GUI extends JFrame {
 						}
 						if(sliceText != null && sliceText.trim().length() > 0){ //if not empty
 							if(opcode == 5){
-								dao.slice(sliceColumn, sliceCmp, sliceText);
+								ModelTable model = new ModelTable(dao.slice(sliceColumn, sliceCmp, sliceText));
+								table.setModel(model);
 							}
 							if(diceText!= null && diceText.trim().length() > 0){//if not empty
-								dao.dice(sliceColumn,sliceCmp,sliceText,diceColumn,diceCmp,diceText);
+								ModelTable model = new ModelTable(dao.dice(sliceColumn,sliceCmp,sliceText,diceColumn,diceCmp,diceText));
+								table.setModel(model);
 							}
 						}else{
 							if(opcode == 5 || opcode == 6){
 								status.setText("You must enter values to slice or dice");
 							}else{
-								dao.operations(opcode, dimensions);
+								ModelTable model = new ModelTable(dao.operations(opcode, dimensions));
+								table.setModel(model);
+								
 							}
 					
 						}
 						
 					}
-					dimensions.clear();
 					map.clear();
 					status.setText("");
 				} catch (Exception exc) {
@@ -360,7 +363,6 @@ public class GUI extends JFrame {
 
 			// create the model and update the "table"
 			ModelTable model = new ModelTable(results);
-
 			table.setModel(model);
 
 		} catch (Exception a) {
